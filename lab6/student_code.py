@@ -16,13 +16,10 @@ def drone_flight_planner (map,policies, values, delivery_fee, battery_drop_cost,
 	# 
 
 	# create my bot
-	# values[0][0] = 150
-	# map[0][0] = 2
 	bot = PLANNER(map,policies, values, delivery_fee, battery_drop_cost, dronerepair_cost, discount)
-
 	bot.print_data()
 	bot.learn()
-	# bot.print_data()
+	bot.print_data()
 	
 
 
@@ -155,7 +152,7 @@ class PLANNER:
 
 		return score 
 
-
+	# based on action return the new coordinate position
 	def move(self,x,y,action):
 		new_x = x
 		new_y = y
@@ -189,17 +186,6 @@ class PLANNER:
 		# self.
 		pos_x,pos_y = self.move(x,y,action)
 		score = self.get_R(power) + self.discount*self.values[pos_y][pos_x] 
-		# self.values[0][1] = 100	
-		for y in range(SIZE):
-			for x in range(SIZE):
-				if(self.values[pos_y][pos_x]!=0):
-					print("jsdkjfsdjkfhskjd")
-					print("jsdkjfsdjkfhskjd")
-					print("jsdkjfsdjkfhskjd")
-					print("jsdkjfsdjkfhskjd")
-					print("jsdkjfsdjkfhskjd")
-
-		# print(score)
 		return score
 
 	# return the reward that will get for this action ( basically only the cost of movement)
