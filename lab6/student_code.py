@@ -68,7 +68,7 @@ class PLANNER:
 		k = 0
 		while(True):
 			res = self.update()
-			if(res and k>3):
+			if(res and k>5):
 				break
 
 			k = k + 1 
@@ -81,7 +81,8 @@ class PLANNER:
 
 	def update(self):
 		# calculate new value board
-		old_values = list(self.values)
+		# old_values = list(self.values.deepcopy())
+		old_values = [x[:] for x in self.values]
 		for y in range(SIZE):
 			for x in range(SIZE):
 				if(self.map[y][x]!=common.constants.RIVAL and self.map[y][x]!=common.constants.CUSTOMER): # prohibits updating the target goal or the death goal
@@ -101,9 +102,19 @@ class PLANNER:
 	# check if the updated values are relative the same or not
 	# return True if the values have converged
 	def check_converge(self,values_old,values_new):
+		values_old[0][0] = -1
+		print("----") 
+		print("----") 
+		print(values_old[0][0]) 
+		print(values_new[0][0]) 
+		print("----") 
+		print("----") 
+		print("----") 
+		print("----") 
 		for y in range(SIZE):
 			for x in range(SIZE):
 				diff = abs(values_old[y][x] - values_new[y][x])
+				# print(diff)
 				if(diff>0.01):
 					print("plaka me kaneis ?")
 					return False
