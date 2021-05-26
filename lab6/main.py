@@ -168,9 +168,9 @@ values_gold2 = [  4.25, 4.44,-1.38,  -9.08, -16.31,-22.89,
 							 36.33,50.00,36.04,  23.37,-200.00,-38.24,
 							 28.38,36.33,28.33,  20.03, -15.23,-23.99]
 
-# print("Map2:");
-# all_passed = run_experiment(data2, -20.683084, p_gold2, values_gold2, 50, 5, 200, .95) and all_passed
-# print
+print("Map2:");
+all_passed = run_experiment(data2, -20.683084, p_gold2, values_gold2, 50, 5, 200, .95) and all_passed
+print
 
 
 						 
@@ -196,9 +196,9 @@ values_gold3 = [  200.00,196.92,-500.00,159.76,161.72,161.35,
 							 187.95,185.40,178.24,175.16,172.62,170.18,
 							 185.08,182.85,180.09,177.33,174.62,171.97]
 
-# print("Map3:");
-# all_passed = run_experiment(data3, 171.97, p_gold3, values_gold3, 200, .1, 500, .99) and all_passed
-# print
+print("Map3:");
+all_passed = run_experiment(data3, 171.97, p_gold3, values_gold3, 200, .1, 500, .99) and all_passed
+print
 
 
 						 
@@ -223,9 +223,9 @@ values_gold4 = [  2118.28,2571.48,3076.57,3631.31,4230.25,4816.32,
 							 2830.99,3622.68,4665.61,6882.79,8300.06,10000.00,
 							 2348.09,2574.66,-500.00,6281.71,7308.73,8415.15]
 
-# print("Map4:");
-# all_passed = run_experiment(data4, 2830.98, p_gold4, values_gold4, 10000, 100, 500, .9) and all_passed
-# print
+print("Map4:");
+all_passed = run_experiment(data4, 2830.98, p_gold4, values_gold4, 10000, 100, 500, .9) and all_passed
+print
 
 
 data5 = ("000000"
@@ -249,9 +249,9 @@ values_gold5 = [  8942.09,9051.30,9159.50,9265.89,9369.73,9458.43,
 							 8643.62,8539.54,7587.67,9705.65,9848.88,10000.00,
 							 8524.10,8430.97,-500.00,9636.97,9750.31,9861.36]
 
-# print("Map5");
-# all_passed = run_experiment(data5, 8643.62, p_gold5, values_gold5, 10000, .1, 500, .99) and all_passed
-# print
+print("Map5");
+all_passed = run_experiment(data5, 8643.62, p_gold5, values_gold5, 10000, .1, 500, .99) and all_passed
+print
 
 
 data6 = ("000000"
@@ -275,9 +275,9 @@ values_gold6 = [  -26070.68,-23496.14,-20933.07,-21617.33,-20863.11,-18937.84,
 							 -16768.20,-12302.80,-7951.10,-7223.90,-252.56,10000.00,
 							 	-14270.99,-8064.60,-500.00,-7271.94,-5331.16,670.86]
 
-# print("Map6");
-# all_passed = run_experiment(data6, -16768.19, p_gold6, values_gold6, 10000, 5000, 500, .9) and all_passed
-# print
+print("Map6");
+all_passed = run_experiment(data6, -16768.19, p_gold6, values_gold6, 10000, 5000, 500, .9) and all_passed
+print
 
 if all_passed:
 	exit(0)
