@@ -1,2 +1,2 @@
 # Intro_to_AI
-Intro to Artificial Intelligence
+these are the homeworks of course Intro to Artificial Intelligence
