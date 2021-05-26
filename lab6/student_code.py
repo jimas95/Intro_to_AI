@@ -71,8 +71,8 @@ class PLANNER:
 				break
 
 			k = k + 1 
-			print(f"Learn --> k{k}")
-			self.print_the_values()
+			# print(f"Learn --> k{k}")
+			# self.print_the_values()
 			if(k>200):#break condition
 				print("Maximum Iteration Reached, algorithm did not convert...")
 				break
