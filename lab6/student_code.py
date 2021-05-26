@@ -37,8 +37,7 @@ class PLANNER:
 		self.policies=policies
 		self.values=values
 		self.delivery_fee=delivery_fee
-		self.battery_drop_cost= 0
-		# self.battery_drop_cost= -battery_drop_cost
+		self.battery_drop_cost= -battery_drop_cost
 		self.dronerepair_cost= -dronerepair_cost
 		self.discount=discount
 
