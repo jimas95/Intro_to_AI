@@ -19,17 +19,9 @@ def drone_flight_planner (map,policies, values, delivery_fee, battery_drop_cost,
 	# values[0][0] = 150
 	# map[0][0] = 2
 	bot = PLANNER(map,policies, values, delivery_fee, battery_drop_cost, dronerepair_cost, discount)
-	for y in range(SIZE):
-		print(bot.values[y])
-	print("-----")
-	print(bot.get_score(5,3,common.constants.SON,True))
-	print(bot.get_score(5,3,common.constants.WON,True))
-	print(bot.get_score(5,3,common.constants.NON,True))
-	print(bot.get_score(5,3,common.constants.EON,True))
-	print("-----")
 
-	# bot.print_data()
-	# bot.learn()
+	bot.print_data()
+	bot.learn()
 	# bot.print_data()
 	
 
@@ -39,6 +31,7 @@ def drone_flight_planner (map,policies, values, delivery_fee, battery_drop_cost,
 	print("********************************************************")
 
 	return 100000000
+
 
 
 class PLANNER:
@@ -52,9 +45,7 @@ class PLANNER:
 		self.dronerepair_cost= -dronerepair_cost
 		self.discount=discount
 
-		# self.values[0][1] = 1500
-		# self.map[0][0] = 2
-		
+
 		# init board
 		self.banned_location = []
 		for y in range(SIZE):
@@ -66,10 +57,10 @@ class PLANNER:
 					self.values[y][x] = self.delivery_fee
 					self.policies[y][x] = common.constants.EXIT
 					self.banned_location.append([y,x])
-				# if(squareVal==common.constants.RIVAL):
-				# 	self.values[y][x] = self.dronerepair_cost
-				# 	self.policies[y][x] = common.constants.EXIT
-				# 	self.banned_location.append([y,x])
+				if(squareVal==common.constants.RIVAL):
+					self.values[y][x] = self.dronerepair_cost
+					self.policies[y][x] = common.constants.EXIT
+					self.banned_location.append([y,x])
 
 
 
@@ -96,8 +87,7 @@ class PLANNER:
 		old_values = list(self.values)
 		for y in range(SIZE):
 			for x in range(SIZE):
-				# if(self.map[y][x]!=common.constants.RIVAL and self.map[y][x]!=common.constants.CUSTOMER): # prohibits updating the target goal or the death goal
-				if(self.map[y][x]!=common.constants.CUSTOMER):
+				if(self.map[y][x]!=common.constants.RIVAL and self.map[y][x]!=common.constants.CUSTOMER): # prohibits updating the target goal or the death goal
 					VK1_val,VK1_action = self.get_new_VK(x,y)
 					self.values[y][x]   = VK1_val
 					self.policies[y][x] = VK1_action
@@ -148,8 +138,8 @@ class PLANNER:
 
 		score = 0 
 		if(action1==common.constants.EXIT):
-			print("WTF ? This should not happen!")
-			print("WTF ? This should not happen!")
+			print("WTF ? This should happen!")
+			print("WTF ? This should happen!")
 
 		action2,action3 = self.get_unliky_actions(action1)
 
@@ -169,7 +159,6 @@ class PLANNER:
 	def move(self,x,y,action):
 		new_x = -1
 		new_y = -1
-		print(f"pos3 --> {y},{x}")
 		if(action==common.constants.SOFF or action==common.constants.SON):
 			new_y = y + 1
 		if(action==common.constants.WOFF or action==common.constants.WON):
@@ -178,7 +167,6 @@ class PLANNER:
 			new_y = y - 1
 		if(action==common.constants.EOFF or action==common.constants.EON):
 			new_x = x + 1
-		print(f"pos2 --> {new_y},{new_x}")
 
 		return self.check_coords(new_x,new_y)
 
@@ -200,13 +188,16 @@ class PLANNER:
 		# return reward + gamma*Value_of_new_pos
 		# self.
 		pos_x,pos_y = self.move(x,y,action)
-		print(f"pos --> {pos_y},{pos_x}")
 		score = self.get_R(power) + self.discount*self.values[pos_y][pos_x] 
 		# self.values[0][1] = 100	
 		for y in range(SIZE):
 			for x in range(SIZE):
 				if(self.values[pos_y][pos_x]!=0):
-					print("we got non zero!")
+					print("jsdkjfsdjkfhskjd")
+					print("jsdkjfsdjkfhskjd")
+					print("jsdkjfsdjkfhskjd")
+					print("jsdkjfsdjkfhskjd")
+					print("jsdkjfsdjkfhskjd")
 
 		# print(score)
 		return score
