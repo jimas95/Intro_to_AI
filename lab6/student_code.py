@@ -22,12 +22,12 @@ def drone_flight_planner (map,policies, values, delivery_fee, battery_drop_cost,
 	# bot.print_data()
 	
 
-
+	best_score = bot.get_Start_Score()
 
 	print("This is the end!")
 	print("********************************************************")
 
-	return 100000000
+	return best_score
 
 
 
@@ -78,10 +78,12 @@ class PLANNER:
 				break
 
 
-
+	# calculate new value board
 	def update(self):
-		# calculate new value board
+		# deep copy the value list 
 		old_values = [x[:] for x in self.values]
+
+		# update new values
 		for y in range(SIZE):
 			for x in range(SIZE):
 				if(self.map[y][x]!=common.constants.RIVAL and self.map[y][x]!=common.constants.CUSTOMER): # prohibits updating the target goal or the death goal
@@ -194,6 +196,15 @@ class PLANNER:
 			battery_cost = 2*self.battery_drop_cost
 		return battery_cost 
 		
+
+	def get_Start_Score(self):
+		for y in range(SIZE):
+			for x in range(SIZE):
+				if(self.map[y][x]==common.constants.PIZZA):
+					return self.values[y][x]
+
+
+
 
 	# based on action you get returned the 2 possible actions due to uncertainty
 	def get_unliky_actions(self,action):
