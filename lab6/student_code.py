@@ -157,8 +157,8 @@ class PLANNER:
 
 
 	def move(self,x,y,action):
-		new_x = -1
-		new_y = -1
+		new_x = x
+		new_y = y
 		if(action==common.constants.SOFF or action==common.constants.SON):
 			new_y = y + 1
 		if(action==common.constants.WOFF or action==common.constants.WON):
