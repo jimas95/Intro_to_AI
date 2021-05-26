@@ -102,23 +102,11 @@ class PLANNER:
 	# check if the updated values are relative the same or not
 	# return True if the values have converged
 	def check_converge(self,values_old,values_new):
-		values_old[0][0] = -1
-		print("----") 
-		print("----") 
-		print(values_old[0][0]) 
-		print(values_new[0][0]) 
-		print("----") 
-		print("----") 
-		print("----") 
-		print("----") 
 		for y in range(SIZE):
 			for x in range(SIZE):
 				diff = abs(values_old[y][x] - values_new[y][x])
-				# print(diff)
 				if(diff>0.01):
-					print("plaka me kaneis ?")
 					return False
-		print("eee ti se kanw mpaglama ")
 		return True
 
 
