@@ -17,9 +17,9 @@ def drone_flight_planner (map,policies, values, delivery_fee, battery_drop_cost,
 
 	# create my bot
 	bot = PLANNER(map,policies, values, delivery_fee, battery_drop_cost, dronerepair_cost, discount)
-	bot.print_data()
+	# bot.print_data()
 	bot.learn()
-	bot.print_data()
+	# bot.print_data()
 	
 
 
@@ -68,20 +68,20 @@ class PLANNER:
 		k = 0
 		while(True):
 			res = self.update()
-			if(res and k>5):
+			if(res):
 				break
 
 			k = k + 1 
 			print(f"Learn --> k{k}")
 			self.print_the_values()
-			if(k>600):#break condition
+			if(k>200):#break condition
+				print("Maximum Iteration Reached, algorithm did not convert...")
 				break
 
 
 
 	def update(self):
 		# calculate new value board
-		# old_values = list(self.values.deepcopy())
 		old_values = [x[:] for x in self.values]
 		for y in range(SIZE):
 			for x in range(SIZE):
