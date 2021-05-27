@@ -71,7 +71,7 @@ class PLANNER:
 				break
 
 			k = k + 1 
-			print(f"Learn --> k{k}")
+			# print(f"Learn --> k{k}")
 			# self.print_the_values()
 			if(k>200):#break condition
 				print("Maximum Iteration Reached, algorithm did not convert...")
@@ -221,7 +221,7 @@ class PLANNER:
 			return best_val,best_action 
 
 		# it appereas we have a tie!
-		print(f"I am dealing with {counter} ties!!")
+		# print(f"I am dealing with {counter} ties!!")
 
 		min_action = 100
 		for i in range(len(value_list)):
