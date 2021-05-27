@@ -71,7 +71,7 @@ class PLANNER:
 				break
 
 			k = k + 1 
-			# print(f"Learn --> k{k}")
+			print(f"Learn --> k{k}")
 			# self.print_the_values()
 			if(k>200):#break condition
 				print("Maximum Iteration Reached, algorithm did not convert...")
@@ -115,10 +115,13 @@ class PLANNER:
 	def get_new_VK(self,x,y):
 		best_val = -99999999
 		best_action = -1 
-
+		value_list = []
+		action_list = []
 		# for every action
 		for action in range(1,9):
 			value = self.get_reward(x,y,action)
+			value_list.append(value)
+			action_list.append(action)
 			# print(f"possible value {y},{x}--> {value}")
 			if(value>best_val): # TO DO implement a better one with priority on ties
 				best_val = value
@@ -126,7 +129,7 @@ class PLANNER:
 		
 		if(best_action==-1):
 			print("ERROR ERROR")
-
+		best_val,best_action = self.dial_with_ties(best_val,best_action,value_list,action_list)
 		return best_val,best_action
 
 	# will return the score/value based on where the drone is and what action does
@@ -202,6 +205,33 @@ class PLANNER:
 			for x in range(SIZE):
 				if(self.map[y][x]==common.constants.PIZZA):
 					return self.values[y][x]
+
+
+
+
+
+	# deal with ties
+	def dial_with_ties(self,best_val,best_action,value_list,action_list):
+		counter = 0 
+		for value in value_list:
+			if(value==best_val):
+				counter = counter + 1
+		
+		if (counter==1):# no problem continue
+			return best_val,best_action 
+
+		# it appereas we have a tie!
+		print(f"I am dealing with {counter} ties!!")
+
+		min_action = 100
+		for i in range(len(value_list)):
+			if(value_list[i]==best_val):
+				if(action_list[i]<min_action):
+					best_action = action_list[i]
+					min_action  = action_list[i]
+		
+		return best_val,best_action
+
 
 
 
