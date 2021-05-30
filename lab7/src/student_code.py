@@ -12,8 +12,8 @@ def detect_slope_intercept(image):
 	# you can use "space=common.init_space(heigh, width)"
 	print("---------------------------------")
 
-	print(type(image))
-	print(f" {len(image)} , {len(image[0])}")
+	# print(type(image))
+	print(f"size --> {len(image)} , {len(image[0])}")
 	
 	detector = LineDetector(image)
 	detector.detect()
@@ -39,9 +39,9 @@ def detect_circles(image):
 # class for detecting lines
 class LineDetector:
 
+
 	def __init__(self,image_):
-		self.votes = [] # votes[b][m]
-		self.init_votes()
+		self.votes = common.init_space(2000,2000) # votes[b][m]
 		self.myLine = common.Line()
 		self.image = image_
 		self.points = []
@@ -92,7 +92,7 @@ class LineDetector:
 					max_value = self.votes[b][m]
 					self.myLine.b = self.uncast_b(b)
 					self.myLine.m = self.uncast_m(m)
-
+		print(f"best vote --> {max_value}")
 
 
 	# range from -10 to 10 cast to 0 - 2000
@@ -120,9 +120,6 @@ class LineDetector:
 		self.createHoughSpace()
 		self.findLine()
 
-	def init_votes(self):
-		for i in range(2000):
-			myList = []
-			for j in range(2000):
-				myList.append(0)
-			self.votes.append(myList)
+
+
+
