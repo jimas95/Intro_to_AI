@@ -41,12 +41,13 @@ class LineDetector:
 
 
 	def __init__(self,image_):
-		self.votes = common.init_space(2000,2000) # votes[b][m]
+		self.gridSize = 2000
+		self.votes = common.init_space(self.gridSize,self.gridSize) # votes[b][m]
 		self.myLine = common.Line()
 		self.image = image_
 		self.points = []
 		self.size = len(image_)
-
+		
 		if(len(image_)!=len(image_[0])):
 			print("we have a problem!")
 		if(SIZE != self.size):
@@ -67,7 +68,7 @@ class LineDetector:
 	# update the voting image 
 	# y = m*x + b
 	def createHoughSpace(self):
-		for i in range(2000):
+		for i in range(self.gridSize):
 				for point in self.points:
 					x = point[0]
 					y = point[1]
@@ -80,14 +81,14 @@ class LineDetector:
 	def vote(self,m,b):
 		b_val = int(self.cast_b(b))
 		m_val = int(self.cast_m(m))
-		if(b_val>-1 and b_val<2000):
-			if(m_val>-1 and m_val<2000):
+		if(b_val>-1 and b_val<self.gridSize):
+			if(m_val>-1 and m_val<self.gridSize):
 				self.votes[b_val][m_val] = self.votes[b_val][m_val] + 1
 
 	def findLine(self):
 		max_value = -1
-		for b in range(2000):
-			for m in range(2000):
+		for b in range(self.gridSize):
+			for m in range(self.gridSize):
 				if(self.votes[b][m]>max_value):
 					max_value = self.votes[b][m]
 					self.myLine.b = self.uncast_b(b)
