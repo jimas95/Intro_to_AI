@@ -127,7 +127,7 @@ class LineDetector:
 
 
 
-# class for detecting lines
+# class for detecting Circle
 class CircleDetector:
 
 
@@ -158,7 +158,6 @@ class CircleDetector:
 		pass
 
 	# update the voting image 
-	# y = m*x + b
 	def createHoughSpace(self):
 		stepTotal = 360*2
 		dtheta = 2*math.pi/stepTotal
@@ -193,7 +192,7 @@ class CircleDetector:
 					# print(f"Circle --> votes: {self.votes[a][b]}")
 					self.detected_cicles = self.detected_cicles + 1
 	
-	# detect the line
+	# detect the Circle
 	def detect(self):
 		
 		self.scanImage()
