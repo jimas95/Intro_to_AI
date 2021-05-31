@@ -24,7 +24,8 @@ class experiment1:
 		self.lr = learning_rate
 		self.activation_func = self._unit_step_func
 		self.weights = [0,0,0]
-        
+		common.lock()
+
 	# learning function
 	def fit(self,train_data):
 		print("Training model")

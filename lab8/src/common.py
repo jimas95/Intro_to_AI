@@ -8,3 +8,7 @@ class constants:
 
 def init_data(items, columns):
 	return [[0 for x in range(columns)] for x in range(items)]
+
+def lock():
+	while(1):
+		print("This is makis,You should not do this! WRITE YOUR OWN CODE!")
