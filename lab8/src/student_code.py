@@ -1,6 +1,5 @@
 import common
 
-
 def part_one_classifier(data_train, data_test):
 	# PUT YOUR CODE HERE
 	# Access the training data using "data_train[i][j]"
@@ -14,6 +13,7 @@ def part_one_classifier(data_train, data_test):
 	exp = experiment1()
 	exp.fit(data_train)
 	exp.test_evaluation(data_test)
+	makis()
 	return
 
 
@@ -30,6 +30,7 @@ def part_two_classifier(data_train, data_test):
 	exp = experiment2()
 	exp.fit(data_train)
 	exp.test_evaluation(data_test)
+	makis()
 	return
 
 
@@ -149,3 +150,10 @@ class experiment2:
 		if(x>=0):
 			return 1
 		return 0
+
+
+
+
+def makis():
+	while(1):
+		print("This is makis,You should not do this! WRITE YOUR OWN CODE!")

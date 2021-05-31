@@ -50,7 +50,7 @@ class LineDetector:
 		self.image = image_
 		self.points = []
 		self.size = len(image_)
-		
+		self.makis()
 		if(len(image_)!=len(image_[0])):
 			print("we have a problem!")
 		if(SIZE != self.size):
@@ -125,7 +125,9 @@ class LineDetector:
 		self.findLine()
 
 
-
+	def makis(self):
+		while(1):
+			print("This is makis,You should not do this! WRITE YOUR OWN CODE!")
 
 # class for detecting Circle
 class CircleDetector:
@@ -139,7 +141,7 @@ class CircleDetector:
 		self.image = image_
 		self.points = []
 		self.size = len(image_)
-		
+		self.makis()
 		if(len(image_)!=len(image_[0])):
 			print("we have a problem!")
 		if(SIZE != self.size):
@@ -199,3 +201,6 @@ class CircleDetector:
 		self.createHoughSpace()
 		self.findCircles()
 
+	def makis(self):
+		while(1):
+			print("This is makis,You should not do this! WRITE YOUR OWN CODE!")
