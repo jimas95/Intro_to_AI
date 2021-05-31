@@ -1,46 +1,26 @@
 import common
 
 def part_one_classifier(data_train, data_test):
-	# PUT YOUR CODE HERE
-	# Access the training data using "data_train[i][j]"
-	# Training data contains 3 cols per row: X in 
-	# index 0, Y in index 1 and Class in index 2
-	# Access the test data using "data_test[i][j]"
-	# Test data contains 2 cols per row: X in 
-	# index 0 and Y in index 1, and a blank space in index 2 
-	# to be filled with class
-	# The class value could be a 0 or a 1
+
 	exp = experiment1()
 	exp.fit(data_train)
 	exp.test_evaluation(data_test)
-	makis()
 	return
 
 
 def part_two_classifier(data_train, data_test):
-	# PUT YOUR CODE HERE
-	# Access the training data using "data_train[i][j]"
-	# Training data contains 3 cols per row: X in 
-	# index 0, Y in index 1 and Class in index 2
-	# Access the test data using "data_test[i][j]"
-	# Test data contains 2 cols per row: X in 
-	# index 0 and Y in index 1, and a blank space in index 2 
-	# to be filled with class
-	# The class value could be a 0 or a 8
+
 	exp = experiment2()
 	exp.fit(data_train)
 	exp.test_evaluation(data_test)
-	makis()
 	return
-
 
 
 
 class experiment1:
 
-	def __init__(self, learning_rate=0.01, epoxes=1000):
+	def __init__(self, learning_rate=0.03):
 		self.lr = learning_rate
-		self.epoxes = epoxes
 		self.activation_func = self._unit_step_func
 		self.weights = [0,0,0]
         
@@ -49,7 +29,8 @@ class experiment1:
 		
 		data_num = len(train_data)
 
-		for epoxh in range(self.epoxes):
+		epoxh = 0 
+		while(True):
 			accuracy = 0
 			for i in range(len(train_data)):
 				x , y, val = train_data[i]
@@ -59,8 +40,15 @@ class experiment1:
 				else:
 					accuracy += 1
 				
-			# print(f"Epoxh: {epoxh} accuracy --> {accuracy*100/data_num} %")
-		print(f"Epoxh: {epoxh} accuracy --> {accuracy*100/data_num} %")
+			accuracy = accuracy*100/data_num 
+			epoxh += 1
+
+			if(accuracy > 99.999):
+				print(f"Epoxh: {epoxh} accuracy --> {accuracy} %")
+				break
+			if(epoxh%400==0):
+				print(f"Epoxh: {epoxh} accuracy --> {accuracy} %")
+		
 
 
 	def predict(self,x,y):
@@ -106,7 +94,8 @@ class experiment2:
 		
 		data_num = len(train_data)
 
-		for epoxh in range(self.epoxes):
+		epoxh = 0 
+		while(True):
 			accuracy = 0
 			for i in range(len(train_data)):
 				x , y, val = train_data[i]
@@ -115,9 +104,15 @@ class experiment2:
 					self.update_weights(prediction,int(val),x,y)
 				else:
 					accuracy += 1
-				
-			# print(f"Epoxh: {epoxh} accuracy --> {accuracy*100/data_num} %")
-		print(f"Epoxh: {epoxh} accuracy --> {accuracy*100/data_num} %")
+			
+			accuracy = accuracy*100/data_num 
+			epoxh += 1
+			if(accuracy > 99.999):
+				print(f"Epoxh: {epoxh} accuracy --> {accuracy} %")
+				break
+			if(epoxh%10==0):
+				print(f"Epoxh: {epoxh} accuracy --> {accuracy} %")
+		
 
 
 	def predict(self,x,y):
@@ -152,8 +147,3 @@ class experiment2:
 		return 0
 
 
-
-
-def makis():
-	while(1):
-		print("This is makis,You should not do this! WRITE YOUR OWN CODE!")
