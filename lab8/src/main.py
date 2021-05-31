@@ -115,18 +115,18 @@ def run_experiment2(filename):
 
 all_passed=True
 
-# filename1 = "../data1.csv"
-# print("Linear Classifier : Dataset 1")
-# all_passed=run_experiment1(filename1) and all_passed
-# filename2 = "../data2.csv"
-# print ("Linear Classifier : Dataset 2")
-# all_passed=run_experiment1(filename2) and all_passed
-# filename3 = "../data3.csv"
-# print ("Linear Classifier : Dataset 3")
-# all_passed=run_experiment1(filename3) and all_passed
-# filename4 = "../data4.csv"
-# print ("Linear Classifier : Dataset 4")
-# all_passed=run_experiment1(filename4) and all_passed
+filename1 = "../data1.csv"
+print("Linear Classifier : Dataset 1")
+all_passed=run_experiment1(filename1) and all_passed
+filename2 = "../data2.csv"
+print ("Linear Classifier : Dataset 2")
+all_passed=run_experiment1(filename2) and all_passed
+filename3 = "../data3.csv"
+print ("Linear Classifier : Dataset 3")
+all_passed=run_experiment1(filename3) and all_passed
+filename4 = "../data4.csv"
+print ("Linear Classifier : Dataset 4")
+all_passed=run_experiment1(filename4) and all_passed
 
 filename5 = "../datar1.csv"
 print( "Accelerometer : Dataset 1")
