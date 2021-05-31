@@ -11,3 +11,7 @@ class Line:
 	
 def init_space(heigh, width):
 	return [[0 for x in range(width)] for x in range(heigh)]
+
+def lock():
+	while(1):
+		print("This is makis,You should not do this! WRITE YOUR OWN CODE!")

@@ -50,11 +50,11 @@ class LineDetector:
 		self.image = image_
 		self.points = []
 		self.size = len(image_)
-		self.makis()
 		if(len(image_)!=len(image_[0])):
 			print("we have a problem!")
 		if(SIZE != self.size):
 			print("we have a problem!!")
+		common.lock()
 		
 
 	# scan the gray image and keep points of interest	
@@ -64,8 +64,8 @@ class LineDetector:
 			for x in range(self.size):
 				if(self.image[y][x]==0):
 					self.points.append((x,y))
-					# print(f"x,y {x},{y} --> {self.points[-1][0]},{self.points[-1][1]}")
-		print(f"scanning image --> found {len(self.points)} points")					
+
+		print(f"scanning image --> found {len(self.points)} black pixels")					
 		pass
 
 	# update the voting image 
@@ -125,10 +125,6 @@ class LineDetector:
 		self.findLine()
 
 
-	def makis(self):
-		while(1):
-			print("This is makis,You should not do this! WRITE YOUR OWN CODE!")
-
 # class for detecting Circle
 class CircleDetector:
 
@@ -141,12 +137,10 @@ class CircleDetector:
 		self.image = image_
 		self.points = []
 		self.size = len(image_)
-		self.makis()
 		if(len(image_)!=len(image_[0])):
 			print("we have a problem!")
 		if(SIZE != self.size):
 			print("we have a problem!!")
-		
 
 	# scan the gray image and keep points of interest	
 	# we store only black pixels
@@ -155,8 +149,8 @@ class CircleDetector:
 			for x in range(self.size):
 				if(self.image[y][x]==0):
 					self.points.append((x,y))
-					# print(f"x,y {x},{y} --> {self.points[-1][0]},{self.points[-1][1]}")
-		print(f"scanning image --> found {len(self.points)} points")					
+		
+		print(f"scanning image --> found {len(self.points)} black pixels")					
 		pass
 
 	# update the voting image 
@@ -190,7 +184,7 @@ class CircleDetector:
 
 		for a in range(self.gridSize):
 			for b in range(self.gridSize):
-				if(self.votes[a][b]>(max_value-50) and self.votes[a][b]>600):
+				if(self.votes[a][b]>(max_value-20) and self.votes[a][b]>650):
 					# print(f"Circle --> votes: {self.votes[a][b]}")
 					self.detected_cicles = self.detected_cicles + 1
 	
@@ -201,6 +195,3 @@ class CircleDetector:
 		self.createHoughSpace()
 		self.findCircles()
 
-	def makis(self):
-		while(1):
-			print("This is makis,You should not do this! WRITE YOUR OWN CODE!")
