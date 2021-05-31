@@ -94,7 +94,7 @@ class experiment1:
 
 class experiment2:
 
-	def __init__(self, learning_rate=0.01, epoxes=10):
+	def __init__(self, learning_rate=0.01, epoxes=100):
 		self.lr = learning_rate
 		self.epoxes = epoxes
 		self.activation_func = self._unit_step_func
@@ -111,11 +111,11 @@ class experiment2:
 				x , y, val = train_data[i]
 				prediction = self.predict(x,y)
 				if(prediction!=val):
-					self.update_weights(prediction,val,x,y)
+					self.update_weights(prediction,int(val),x,y)
 				else:
 					accuracy += 1
 				
-			print(f"Epoxh: {epoxh} accuracy --> {accuracy*100/data_num} %")
+			# print(f"Epoxh: {epoxh} accuracy --> {accuracy*100/data_num} %")
 		print(f"Epoxh: {epoxh} accuracy --> {accuracy*100/data_num} %")
 
 
@@ -131,10 +131,10 @@ class experiment2:
 		
 
 	def update_weights(self,predi,val,x,y):
-		self.weights[val][0]   += 1.0 #self.lr*x
-		self.weights[val][1]   += 1.0 #self.lr*y
-		self.weights[predi][0] -= 1.0 #self.lr*x
-		self.weights[predi][1] -= 1.0 #self.lr*y
+		self.weights[val][0]   += self.lr*x
+		self.weights[val][1]   += self.lr*y
+		self.weights[predi][0] -= self.lr*x
+		self.weights[predi][1] -= self.lr*y
 
 
 	def test_evaluation(self,test_data):
