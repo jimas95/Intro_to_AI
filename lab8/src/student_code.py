@@ -20,14 +20,14 @@ def part_two_classifier(data_train, data_test):
 class experiment1:
 
 	# initialize
-	def __init__(self, learning_rate=0.03):
+	def __init__(self, learning_rate=0.01):
 		self.lr = learning_rate
 		self.activation_func = self._unit_step_func
 		self.weights = [0,0,0]
         
-	# learning functions 
+	# learning function
 	def fit(self,train_data):
-		
+		print("Training model")
 		data_num = len(train_data)
 
 		epoxh = 0 
@@ -53,9 +53,10 @@ class experiment1:
 				break
 
 			# debug print
-			if(epoxh%400==0):
-				print(f"Epoxh: {epoxh} accuracy --> {accuracy} %")
+			if(epoxh%200==0):
+				print(f"Epoxh: {epoxh} accuracy --> {accuracy} %",end='\r')
 		
+		print("Training Done")
 
 	# prediction functions, input is data values
 	def predict(self,x,y):
@@ -98,10 +99,10 @@ class experiment2:
 	# classifiers of weight should classifie class 0 to weights[0], 1 to weights[1],... n to weights[n]
 	def __init__(self, learning_rate=0.01):
 		self.lr = learning_rate
-		self.activation_func = self._unit_step_func
 		self.weights = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]] 
         
 
+	# learning function
 	def fit(self,train_data):
 		
 		data_num = len(train_data)
@@ -121,8 +122,10 @@ class experiment2:
 			if(accuracy > 99.999):
 				print(f"Epoxh: {epoxh} accuracy --> {accuracy} %")
 				break
+
+			# debug print
 			if(epoxh%10==0):
-				print(f"Epoxh: {epoxh} accuracy --> {accuracy} %")
+				print(f"Epoxh: {epoxh} accuracy --> {accuracy} %",end='\r')
 		
 
 	# prediction functions, input is data values
