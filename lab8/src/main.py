@@ -128,15 +128,15 @@ filename4 = "../data4.csv"
 print ("Linear Classifier : Dataset 4")
 all_passed=run_experiment1(filename4) and all_passed
 
-filename5 = "../datar1.csv"
-print( "Accelerometer : Dataset 1")
-all_passed=run_experiment2(filename5) and all_passed
-filename6 = "../datar2.csv"
-print( "Accelerometer : Dataset 2")
-all_passed=run_experiment2(filename6) and all_passed
-filename7 = "../datar3.csv"
-print( "Accelerometer : Dataset 3")
-all_passed=run_experiment2(filename7) and all_passed
+# filename5 = "../datar1.csv"
+# print( "Accelerometer : Dataset 1")
+# all_passed=run_experiment2(filename5) and all_passed
+# filename6 = "../datar2.csv"
+# print( "Accelerometer : Dataset 2")
+# all_passed=run_experiment2(filename6) and all_passed
+# filename7 = "../datar3.csv"
+# print( "Accelerometer : Dataset 3")
+# all_passed=run_experiment2(filename7) and all_passed
 
  
 if all_passed:
